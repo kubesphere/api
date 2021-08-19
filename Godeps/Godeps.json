@@ -103,6 +103,10 @@
 			"Rev": "f65c72e2690d"
 		},
 		{
+			"ImportPath": "github.com/alessio/shellescape",
+			"Rev": "v1.2.2"
+		},
+		{
 			"ImportPath": "github.com/andreyvit/diff",
 			"Rev": "c7f18ee00883"
 		},
@@ -184,7 +188,7 @@
 		},
 		{
 			"ImportPath": "github.com/coreos/etcd",
-			"Rev": "v3.3.15"
+			"Rev": "v3.3.13"
 		},
 		{
 			"ImportPath": "github.com/coreos/go-etcd",
@@ -269,6 +273,10 @@
 		{
 			"ImportPath": "github.com/evanphx/json-patch",
 			"Rev": "v4.11.0"
+		},
+		{
+			"ImportPath": "github.com/evanphx/json-patch/v5",
+			"Rev": "v5.0.0"
 		},
 		{
 			"ImportPath": "github.com/fatih/color",
@@ -375,6 +383,10 @@
 			"Rev": "348f09dbbbc0"
 		},
 		{
+			"ImportPath": "github.com/gobuffalo/flect",
+			"Rev": "v0.2.0"
+		},
+		{
 			"ImportPath": "github.com/gogo/protobuf",
 			"Rev": "v1.3.2"
 		},
@@ -393,6 +405,10 @@
 		{
 			"ImportPath": "github.com/golang/protobuf",
 			"Rev": "v1.5.2"
+		},
+		{
+			"ImportPath": "github.com/google/addlicense",
+			"Rev": "a0294312aa76"
 		},
 		{
 			"ImportPath": "github.com/google/btree",
@@ -616,11 +632,11 @@
 		},
 		{
 			"ImportPath": "github.com/mattn/go-colorable",
-			"Rev": "v0.0.9"
+			"Rev": "v0.1.2"
 		},
 		{
 			"ImportPath": "github.com/mattn/go-isatty",
-			"Rev": "v0.0.4"
+			"Rev": "v0.0.12"
 		},
 		{
 			"ImportPath": "github.com/mattn/go-runewidth",
@@ -720,7 +736,7 @@
 		},
 		{
 			"ImportPath": "github.com/pelletier/go-toml",
-			"Rev": "v1.2.0"
+			"Rev": "v1.7.0"
 		},
 		{
 			"ImportPath": "github.com/peterbourgon/diskv",
@@ -900,7 +916,7 @@
 		},
 		{
 			"ImportPath": "github.com/ugorji/go",
-			"Rev": "bdcc60b419d1"
+			"Rev": "v1.1.4"
 		},
 		{
 			"ImportPath": "github.com/ugorji/go/codec",
@@ -1228,15 +1244,19 @@
 		},
 		{
 			"ImportPath": "sigs.k8s.io/application",
-			"Rev": "v0.8.3"
+			"Rev": "c8e2959e57a0"
 		},
 		{
 			"ImportPath": "sigs.k8s.io/controller-runtime",
 			"Rev": "v0.9.3"
 		},
 		{
-			"ImportPath": "sigs.k8s.io/structured-merge-diff",
-			"Rev": "b1b620dd3f06"
+			"ImportPath": "sigs.k8s.io/controller-tools",
+			"Rev": "v0.4.0"
+		},
+		{
+			"ImportPath": "sigs.k8s.io/kind",
+			"Rev": "v0.8.1"
 		},
 		{
 			"ImportPath": "sigs.k8s.io/structured-merge-diff/v3",
@@ -1245,10 +1265,6 @@
 		{
 			"ImportPath": "sigs.k8s.io/structured-merge-diff/v4",
 			"Rev": "v4.1.0"
-		},
-		{
-			"ImportPath": "sigs.k8s.io/testing_frameworks",
-			"Rev": "v0.1.2"
 		},
 		{
 			"ImportPath": "sigs.k8s.io/yaml",
