@@ -352,7 +352,7 @@
 		},
 		{
 			"ImportPath": "github.com/go-openapi/spec",
-			"Rev": "v0.19.5"
+			"Rev": "v0.19.7"
 		},
 		{
 			"ImportPath": "github.com/go-openapi/strfmt",
@@ -444,7 +444,7 @@
 		},
 		{
 			"ImportPath": "github.com/googleapis/gnostic",
-			"Rev": "v0.5.5"
+			"Rev": "v0.4.1"
 		},
 		{
 			"ImportPath": "github.com/gopherjs/gopherjs",
@@ -724,7 +724,7 @@
 		},
 		{
 			"ImportPath": "github.com/onsi/gomega",
-			"Rev": "v1.13.0"
+			"Rev": "v1.15.0"
 		},
 		{
 			"ImportPath": "github.com/pascaldekloe/goe",
@@ -887,10 +887,6 @@
 			"Rev": "v1.7.0"
 		},
 		{
-			"ImportPath": "github.com/stoewer/go-strcase",
-			"Rev": "v1.2.0"
-		},
-		{
 			"ImportPath": "github.com/stretchr/objx",
 			"Rev": "v0.2.0"
 		},
@@ -1000,7 +996,7 @@
 		},
 		{
 			"ImportPath": "golang.org/x/net",
-			"Rev": "89ef3d95e781"
+			"Rev": "abc453219eb5"
 		},
 		{
 			"ImportPath": "golang.org/x/oauth2",
@@ -1152,7 +1148,7 @@
 		},
 		{
 			"ImportPath": "istio.io/api",
-			"Rev": "24be265d41c3"
+			"Rev": "d4b7e3fc2b44"
 		},
 		{
 			"ImportPath": "istio.io/gogo-genproto",
@@ -1200,7 +1196,7 @@
 		},
 		{
 			"ImportPath": "k8s.io/kube-openapi",
-			"Rev": "3c818078ee3d"
+			"Rev": "591a79e4bda7"
 		},
 		{
 			"ImportPath": "k8s.io/utils",
