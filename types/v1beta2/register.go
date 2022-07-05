@@ -1,5 +1,5 @@
 /*
-
+Copyright 2019 The KubeSphere Authors.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -14,10 +14,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// Package v2beta2 contains API Schema definitions for the notification v1alpha1 API group
+// NOTE: Boilerplate only. Ignore this file.
+
+// +k8s:openapi-gen=true
 // +k8s:deepcopy-gen=package,register
-// +groupName=notification.kubesphere.io
-package v2beta2
+// +kubebuilder:object:generate=true
+// +groupName=types.kubefed.io
+package v1beta2
 
 import (
 	"k8s.io/apimachinery/pkg/runtime/schema"
@@ -25,16 +28,30 @@ import (
 )
 
 var (
-	// GroupVersion is group version used to register these objects
-	SchemeGroupVersion = schema.GroupVersion{Group: "notification.kubesphere.io", Version: "v2beta2"}
+	// SchemeGroupVersion is group version used to register these objects
+	SchemeGroupVersion = schema.GroupVersion{Group: "types.kubefed.io", Version: "v1beta2"}
 
 	// SchemeBuilder is used to add go types to the GroupVersionKind scheme
 	SchemeBuilder = &scheme.Builder{GroupVersion: SchemeGroupVersion}
 
-	// AddToScheme adds the types in this group-version to the given scheme.
+	// AddToScheme is required by pkg/client/...
 	AddToScheme = SchemeBuilder.AddToScheme
 )
 
+// Resource is required by pkg/client/listers/...
 func Resource(resource string) schema.GroupResource {
 	return SchemeGroupVersion.WithResource(resource).GroupResource()
+}
+
+func init() {
+	SchemeBuilder.Register(
+		&FederatedNotificationConfig{},
+		&FederatedNotificationConfigList{},
+		&FederatedNotificationReceiver{},
+		&FederatedNotificationReceiverList{},
+		&FederatedNotificationRouter{},
+		&FederatedNotificationRouterList{},
+		&FederatedNotificationSilence{},
+		&FederatedNotificationSilenceList{},
+	)
 }

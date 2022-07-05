@@ -14,18 +14,17 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package v1beta1
+package v1beta2
 
 import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-
-	"kubesphere.io/api/notification/v2beta1"
+	"kubesphere.io/api/notification/v2beta2"
 )
 
 const (
-	ResourcePluralFederatedNotificationConfig   = "federatednotificationconfigs"
-	ResourceSingularFederatedNotificationConfig = "federatednotificationconfig"
-	FederatedNotificationConfigKind             = "FederatedNotificationConfig"
+	ResourcePluralFederatedNotificationSilence   = "federatednotificationsilences"
+	ResourceSingularFederatedNotificationSilence = "federatednotificationsilence"
+	FederatedNotificationSilenceKind             = "FederatedNotificationSilence"
 )
 
 // +genclient:nonNamespaced
@@ -34,33 +33,32 @@ const (
 // +k8s:openapi-gen=true
 // +kubebuilder:resource:scope=Cluster
 // +kubebuilder:subresource:status
-type FederatedNotificationConfig struct {
+type FederatedNotificationSilence struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Spec              FederatedNotificationConfigSpec `json:"spec"`
+	Spec              FederatedNotificationSilenceSpec `json:"spec"`
 
 	Status *GenericFederatedStatus `json:"status,omitempty"`
 }
 
-type FederatedNotificationConfigSpec struct {
-	Template  NotificationConfigTemplate `json:"template"`
-	Placement GenericPlacementFields     `json:"placement"`
-	Overrides []GenericOverrideItem      `json:"overrides,omitempty"`
+type FederatedNotificationSilenceSpec struct {
+	Template  NotificationSilenceTemplate `json:"template"`
+	Placement GenericPlacementFields      `json:"placement"`
+	Overrides []GenericOverrideItem       `json:"overrides,omitempty"`
 }
 
-type NotificationConfigTemplate struct {
+type NotificationSilenceTemplate struct {
 	// +kubebuilder:pruning:PreserveUnknownFields
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Spec              v2beta1.ConfigSpec `json:"spec,omitempty"`
+	Spec              v2beta2.SilenceSpec `json:"spec,omitempty"`
 }
 
+// +k8s:deepcopy-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// FederatedNotificationConfigList contains a list of federatednotificationconfiglists
-type FederatedNotificationConfigList struct {
+// FederatedNotificationSilenceList contains a list of federatednotificationsilencelists
+type FederatedNotificationSilenceList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []FederatedNotificationConfig `json:"items"`
+	Items           []FederatedNotificationSilence `json:"items"`
 }
-
-func (_ *FederatedNotificationConfig) Hub() {}

@@ -807,6 +807,10 @@
 			"Rev": "52369c62f446"
 		},
 		{
+			"ImportPath": "github.com/robfig/cron/v3",
+			"Rev": "v3.0.1"
+		},
+		{
 			"ImportPath": "github.com/rogpeppe/fastuuid",
 			"Rev": "6724a57986af"
 		},
