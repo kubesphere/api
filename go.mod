@@ -1,15 +1,17 @@
-// This is a generated file. Do not edit directly.
-
 module kubesphere.io/api
 
 go 1.18
 
 require (
-	github.com/go-openapi/spec v0.19.7
+	github.com/go-logr/logr v0.4.0
+	github.com/go-openapi/spec v0.19.8
 	github.com/onsi/gomega v1.15.0
 	github.com/projectcalico/libcalico-go v1.7.2-0.20191014160346-2382c6cdd056
+	github.com/prometheus/common v0.37.0
+	github.com/prometheus/prometheus v1.8.2-0.20200907175821-8219b442c864
 	github.com/robfig/cron/v3 v3.0.1
 	golang.org/x/net v0.0.0-20210525063256-abc453219eb5
+	gopkg.in/yaml.v3 v3.0.0-20200615113413-eeeca48fe776
 	istio.io/api v0.0.0-20201113182140-d4b7e3fc2b44
 	k8s.io/api v0.22.1
 	k8s.io/apiextensions-apiserver v0.21.4
@@ -22,15 +24,11 @@ require (
 
 require (
 	github.com/emicklei/go-restful v2.14.3+incompatible // indirect
-	github.com/go-openapi/swag v0.19.9 // indirect
 	github.com/google/go-cmp v0.5.6 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/kelseyhightower/envconfig v1.4.0 // indirect
-	github.com/konsorten/go-windows-terminal-sequences v1.0.2 // indirect
-	github.com/mailru/easyjson v0.7.1 // indirect
 	github.com/sirupsen/logrus v1.8.1 // indirect
 	github.com/stretchr/testify v1.7.0 // indirect
-	go.uber.org/atomic v1.6.0 // indirect
 	go.uber.org/multierr v1.4.0 // indirect
 	golang.org/x/oauth2 v0.0.0-20210514164344-f6687ab2804c // indirect
 	golang.org/x/sys v0.0.0-20220708085239-5a0f0661e09d // indirect
