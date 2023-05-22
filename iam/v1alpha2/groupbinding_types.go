@@ -31,10 +31,8 @@ type GroupRef struct {
 	Name     string `json:"name,omitempty"`
 }
 
-// +genclient:nonNamespaced
-// +genclient
 // +kubebuilder:object:root=true
-// +k8s:openapi-gen=true
+// +kubebuilder:deprecatedversion
 // +kubebuilder:printcolumn:name="Group",type="string",JSONPath=".groupRef.name"
 // +kubebuilder:printcolumn:name="Users",type="string",JSONPath=".users"
 // +kubebuilder:resource:categories="group",scope="Cluster"
@@ -49,7 +47,6 @@ type GroupBinding struct {
 }
 
 // +kubebuilder:object:root=true
-// +genclient:nonNamespaced
 
 // GroupBindingList contains a list of GroupBinding
 type GroupBindingList struct {

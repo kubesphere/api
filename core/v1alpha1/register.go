@@ -1,5 +1,5 @@
 /*
-Copyright 2023.
+Copyright 2022 The KubeSphere Authors.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -14,11 +14,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// Package v1beta1 contains API Schema definitions for the iam v1beta1 API group
-// +k8s:openapi-gen=true
 // +kubebuilder:object:generate=true
-// +groupName=iam.kubesphere.io
-package v1beta1
+// +groupName=kubesphere.io
+
+package v1alpha1
 
 import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -26,56 +25,35 @@ import (
 	"k8s.io/apimachinery/pkg/runtime/schema"
 )
 
+const GroupName = "kubesphere.io"
+
 var (
 	// SchemeGroupVersion is group version used to register these objects
-	SchemeGroupVersion = schema.GroupVersion{Group: "iam.kubesphere.io", Version: "v1beta1"}
+	SchemeGroupVersion = schema.GroupVersion{Group: GroupName, Version: "v1alpha1"}
 
-	// SchemeBuilder is used to add go types to the GroupVersionKind scheme
 	SchemeBuilder = runtime.NewSchemeBuilder(addKnownTypes)
-
-	// AddToScheme is required by pkg/client/...
-	AddToScheme = SchemeBuilder.AddToScheme
+	AddToScheme   = SchemeBuilder.AddToScheme
 )
 
-// Resource is required by pkg/client/listers/...
+// Resource takes an unqualified resource and returns a Group qualified GroupResource
 func Resource(resource string) schema.GroupResource {
 	return SchemeGroupVersion.WithResource(resource).GroupResource()
 }
 
-// Adds the list of known types to the given scheme.
 func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
+		&Repository{},
+		&RepositoryList{},
+		&Extension{},
+		&ExtensionList{},
+		&ExtensionVersion{},
+		&ExtensionVersionList{},
+		&Subscription{},
+		&SubscriptionList{},
 		&Category{},
 		&CategoryList{},
-		&Role{},
-		&RoleList{},
-		&ClusterRole{},
-		&ClusterRoleList{},
-		&WorkspaceRole{},
-		&WorkspaceRoleList{},
-		&GlobalRole{},
-		&GlobalRoleList{},
-		&RoleTemplate{},
-		&RoleTemplateList{},
-		&RoleBinding{},
-		&RoleBindingList{},
-		&ClusterRoleBinding{},
-		&ClusterRoleBindingList{},
-		&WorkspaceRoleBinding{},
-		&WorkspaceRoleBindingList{},
-		&GlobalRoleBinding{},
-		&GlobalRoleBindingList{},
-		&RoleBase{},
-		&RoleBaseList{},
-		&User{},
-		&UserList{},
-		&Group{},
-		&GroupList{},
-		&GroupBinding{},
-		&GroupBindingList{},
-		&LoginRecord{},
-		&LoginRecordList{},
 	)
+	// Add the watch version that applies
 	metav1.AddToGroupVersion(scheme, SchemeGroupVersion)
 	return nil
 }

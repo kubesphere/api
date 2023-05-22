@@ -36,10 +36,8 @@ type GroupStatus struct {
 	// Important: Run "make" to regenerate code after modifying this file
 }
 
-// +genclient:nonNamespaced
-// +genclient
 // +kubebuilder:object:root=true
-// +k8s:openapi-gen=true
+// +kubebuilder:deprecatedversion
 // +kubebuilder:printcolumn:name="Workspace",type="string",JSONPath=".metadata.labels.kubesphere\\.io/workspace"
 // +kubebuilder:resource:categories="group",scope="Cluster"
 
@@ -53,7 +51,6 @@ type Group struct {
 }
 
 // +kubebuilder:object:root=true
-// +genclient:nonNamespaced
 
 // GroupList contains a list of Group
 type GroupList struct {

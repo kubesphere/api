@@ -28,20 +28,21 @@ const (
 	ResourcesPluralCluster   = "clusters"
 
 	HostCluster = "cluster-role.kubesphere.io/host"
-	// Description of which region the cluster been placed
+	// ClusterRegion is the description of which region the cluster been placed
 	ClusterRegion = "cluster.kubesphere.io/region"
-	// Name of the cluster group
+	// ClusterGroup is the name of the cluster group
 	ClusterGroup = "cluster.kubesphere.io/group"
 
 	Finalizer = "finalizer.cluster.kubesphere.io"
 )
 
 type ClusterSpec struct {
-
 	// Join cluster as a kubefed cluster
+	// Deprecated: will be removed in the next version.
 	JoinFederation bool `json:"joinFederation,omitempty"`
 
 	// Desired state of the cluster
+	// Deprecated: will be removed in the next version.
 	Enable bool `json:"enable,omitempty"`
 
 	// Provider of the cluster, this field is just for description
@@ -50,7 +51,7 @@ type ClusterSpec struct {
 	// Connection holds info to connect to the member cluster
 	Connection Connection `json:"connection,omitempty"`
 
-	// ExternalKubeAPIEnabled export kubeapiserver to public use a lb type service if connection type is proxy
+	// ExternalKubeAPIEnabled export kube-apiserver to public use a lb type service if connection type is proxy
 	ExternalKubeAPIEnabled bool `json:"externalKubeAPIEnabled,omitempty"`
 }
 
@@ -62,7 +63,6 @@ const (
 )
 
 type Connection struct {
-
 	// type defines how host cluster will connect to host cluster
 	// ConnectionTypeDirect means direct connection, this requires
 	//   kubeconfig and kubesphere apiserver endpoint provided
@@ -105,26 +105,29 @@ type Connection struct {
 type ClusterConditionType string
 
 const (
-	// Cluster agent is initialized and waiting for connecting
+	// ClusterInitialized indicates the Cluster agent is initialized and waiting for connecting
 	ClusterInitialized ClusterConditionType = "Initialized"
 
-	// Cluster agent is available
+	// ClusterAgentAvailable indicates the Cluster agent is available
 	ClusterAgentAvailable ClusterConditionType = "AgentAvailable"
 
-	// Cluster has been one of federated clusters
+	// ClusterFederated indicates the Cluster has been one of federated clusters
+	// Deprecated: will be removed in the next version.
 	ClusterFederated ClusterConditionType = "Federated"
 
-	// Cluster external access ready
+	// ClusterExternalAccessReady indicates the Cluster external access ready
 	ClusterExternalAccessReady ClusterConditionType = "ExternalAccessReady"
 
-	// Cluster is all available for requests
+	// ClusterReady indicates the Cluster is all available for requests
 	ClusterReady ClusterConditionType = "Ready"
 
-	// Openpitrix runtime is created
+	// ClusterOpenPitrixRuntimeReady indicates the Openpitrix runtime is created
 	ClusterOpenPitrixRuntimeReady ClusterConditionType = "OpenPitrixRuntimeReady"
 
 	// ClusterKubeConfigCertExpiresInSevenDays indicates that the cluster certificate is about to expire.
 	ClusterKubeConfigCertExpiresInSevenDays ClusterConditionType = "KubeConfigCertExpiresInSevenDays"
+
+	ClusterKSCoreReady = "KSCoreReady"
 )
 
 type ClusterCondition struct {
@@ -138,12 +141,11 @@ type ClusterCondition struct {
 	LastTransitionTime metav1.Time `json:"lastTransitionTime,omitempty"`
 	// The reason for the condition's last transition.
 	Reason string `json:"reason,omitempty"`
-	// A human readable message indicating details about the transition.
+	// A human-readable message indicating details about the transition.
 	Message string `json:"message,omitempty"`
 }
 
 type ClusterStatus struct {
-
 	// Represents the latest available observations of a cluster's current state.
 	Conditions []ClusterCondition `json:"conditions,omitempty"`
 
@@ -167,6 +169,7 @@ type ClusterStatus struct {
 
 	// Configz is status of components enabled in the member cluster. This is synchronized with member cluster
 	// every amount of time, like 5 minutes.
+	// Deprecated: this field will be removed in the future version.
 	// +optional
 	Configz map[string]bool `json:"configz,omitempty"`
 
@@ -178,9 +181,7 @@ type ClusterStatus struct {
 // +kubebuilder:object:root=true
 // +k8s:openapi-gen=true
 // +genclient:nonNamespaced
-// +kubebuilder:printcolumn:name="Federated",type="boolean",JSONPath=".spec.joinFederation"
 // +kubebuilder:printcolumn:name="Provider",type="string",JSONPath=".spec.provider"
-// +kubebuilder:printcolumn:name="Active",type="boolean",JSONPath=".spec.enable"
 // +kubebuilder:printcolumn:name="Version",type="string",JSONPath=".status.kubernetesVersion"
 // +kubebuilder:resource:scope=Cluster
 
