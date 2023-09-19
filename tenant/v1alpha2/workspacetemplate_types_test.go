@@ -20,20 +20,22 @@ import (
 	"log"
 	"testing"
 
+	"k8s.io/apimachinery/pkg/runtime"
+
 	"github.com/onsi/gomega"
 	"golang.org/x/net/context"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/types"
-	"k8s.io/client-go/kubernetes/scheme"
 	"sigs.k8s.io/controller-runtime/pkg/client/fake"
 )
 
 func TestStorageWorkspaceTemplate(t *testing.T) {
-	err := SchemeBuilder.AddToScheme(scheme.Scheme)
+	scheme := runtime.NewScheme()
+	err := SchemeBuilder.AddToScheme(scheme)
 	if err != nil {
 		log.Fatal(err)
 	}
-	c := fake.NewFakeClientWithScheme(scheme.Scheme)
+	c := fake.NewFakeClientWithScheme(scheme)
 
 	key := types.NamespacedName{
 		Name: "foo",

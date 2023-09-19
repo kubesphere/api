@@ -55,15 +55,12 @@ type RuleSpec struct {
 	PolicyRules []PolicyRule `json:"rules,omitempty" protobuf:"bytes,8,opt,name=rules"`
 }
 
-// AuditRuleStatus defines the observed state of Rule
+// RuleStatus defines the observed state of Rule
 type RuleStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 }
 
-// +genclient
-// +genclient:noStatus
-// +genclient:nonNamespaced
 // +kubebuilder:object:root=true
 
 // Rule is the Schema for the rules API
@@ -77,7 +74,7 @@ type Rule struct {
 
 // +kubebuilder:object:root=true
 
-// AuditRuleList contains a list of Rule
+// RuleList contains a list of Rule
 type RuleList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
