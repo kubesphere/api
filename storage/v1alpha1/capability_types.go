@@ -57,10 +57,7 @@ type PluginInfo struct {
 	Version string `json:"version"`
 }
 
-// +genclient
 // +kubebuilder:object:root=true
-// +genclient:noStatus
-// +genclient:nonNamespaced
 // +kubebuilder:printcolumn:name="Provisioner",type="string",JSONPath=".spec.provisioner"
 // +kubebuilder:printcolumn:name="Volume",type="boolean",JSONPath=".spec.features.volume.create"
 // +kubebuilder:printcolumn:name="Expand",type="string",JSONPath=".spec.features.volume.expandMode"
@@ -70,7 +67,6 @@ type PluginInfo struct {
 // +kubebuilder:resource:scope="Cluster"
 
 // StorageClassCapability is the Schema for the storage class capability API
-// +k8s:openapi-gen=true
 type StorageClassCapability struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
@@ -85,7 +81,6 @@ type StorageClassCapabilitySpec struct {
 }
 
 // +kubebuilder:object:root=true
-// +genclient:nonNamespaced
 
 // StorageClassCapabilityList contains a list of StorageClassCapability
 type StorageClassCapabilityList struct {
@@ -94,17 +89,13 @@ type StorageClassCapabilityList struct {
 	Items           []StorageClassCapability `json:"items"`
 }
 
-// +genclient
 // +kubebuilder:object:root=true
-// +genclient:noStatus
-// +genclient:nonNamespaced
 // +kubebuilder:printcolumn:name="Provisioner",type="string",JSONPath=".spec.pluginInfo.name"
 // +kubebuilder:printcolumn:name="Expand",type="string",JSONPath=".spec.features.volume.expandMode"
 // +kubebuilder:printcolumn:name="Age",type="date",JSONPath=".metadata.creationTimestamp"
 // +kubebuilder:resource:scope="Cluster"
 
 // ProvisionerCapability is the schema for the provisionercapability API
-// +k8s:openapi-gen=true
 type ProvisionerCapability struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
@@ -119,6 +110,7 @@ type ProvisionerCapabilitySpec struct {
 }
 
 // +kubebuilder:object:root=true
+
 type ProvisionerCapabilityList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata"`

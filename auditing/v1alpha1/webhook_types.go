@@ -28,7 +28,7 @@ import (
 type Receiver struct {
 	// Receiver name
 	// +optional
-	ReceicerName string `json:"name,omitempty" protobuf:"bytes,8,opt,name=name"`
+	ReceiverName string `json:"name,omitempty" protobuf:"bytes,8,opt,name=name"`
 	// Receiver type, alertmanager or webhook
 	// +optional
 	ReceiverType string `json:"type,omitempty" protobuf:"bytes,8,opt,name=type"`
@@ -197,9 +197,6 @@ type WebhookStatus struct {
 	// Important: Run "make" to regenerate code after modifying this file
 }
 
-// +genclient
-// +genclient:noStatus
-// +genclient:nonNamespaced
 // +kubebuilder:object:root=true
 // +kubebuilder:object:root=true
 
@@ -212,7 +209,6 @@ type Webhook struct {
 	Status WebhookStatus `json:"status,omitempty"`
 }
 
-// +kubebuilder:object:root=true
 // +kubebuilder:object:root=true
 
 // WebhookList contains a list of Webhook

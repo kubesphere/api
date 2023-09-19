@@ -1,5 +1,5 @@
 /*
-Copyright 2019 The KubeSphere Authors.
+Copyright 2023.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -20,47 +20,51 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
-const (
-	ResourceKindWorkspace     = "Workspace"
-	ResourceSingularWorkspace = "workspace"
-	ResourcePluralWorkspace   = "workspaces"
-	WorkspaceLabel            = "kubesphere.io/workspace"
-)
-
 // EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
 // NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
 
-// WorkspaceSpec defines the desired state of Workspace
-type WorkspaceSpec struct {
-	Manager string `json:"manager,omitempty"`
-}
+type GrantMethod string
 
-// WorkspaceStatus defines the observed state of Workspace
-type WorkspaceStatus struct {
-	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
-}
+var (
+	GrantMethodAuto   GrantMethod = "auto"
+	GrantMethodPrompt GrantMethod = "prompt"
+)
 
 // +kubebuilder:object:root=true
-// +kubebuilder:resource:categories="tenant",scope="Cluster"
+// +kubebuilder:resource:scope=Cluster,categories=oauth
 
-// Workspace is the Schema for the workspaces API
-type Workspace struct {
+// OAuthClient is the Schema for the oauthclients API
+type OAuthClient struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Spec              WorkspaceSpec   `json:"spec,omitempty"`
-	Status            WorkspaceStatus `json:"status,omitempty"`
+
+	Secret string `json:"secret"`
+
+	// +kubebuilder:validation:Enum=auto;prompt
+	GrantMethod GrantMethod `json:"grantMethod"`
+
+	// +listType=set
+	// +optional
+	RedirectURIs []string `json:"redirectURIs,omitempty"`
+	// +kubebuilder:default=7200
+	// +kubebuilder:validation:Minimum=600
+	// +optional
+	AccessTokenMaxAge int64 `json:"accessTokenMaxAge,omitempty"`
+	// +kubebuilder:default=7200
+	// +kubebuilder:validation:Minimum=600
+	// +optional
+	AccessTokenInactivityTimeout int64 `json:"accessTokenInactivityTimeout,omitempty"`
 }
 
 // +kubebuilder:object:root=true
 
-// WorkspaceList contains a list of Workspace
-type WorkspaceList struct {
+// OAuthClientList contains a list of OAuthClient
+type OAuthClientList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []Workspace `json:"items"`
+	Items           []OAuthClient `json:"items"`
 }
 
 func init() {
-	SchemeBuilder.Register(&Workspace{}, &WorkspaceList{})
+	SchemeBuilder.Register(&OAuthClient{}, &OAuthClientList{})
 }
