@@ -34,7 +34,7 @@ func TestStorageResourceQuota(t *testing.T) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	c := fake.NewFakeClientWithScheme(scheme)
+	c := fake.NewClientBuilder().WithScheme(scheme).Build()
 
 	key := types.NamespacedName{
 		Name: "foo",

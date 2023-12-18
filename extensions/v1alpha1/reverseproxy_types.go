@@ -50,7 +50,10 @@ type Directives struct {
 	//  WrapTransport indicates whether the provided Transport should be wrapped with default proxy transport behavior (URL rewriting, X-Forwarded-* header setting)
 	WrapTransport bool `json:"wrapTransport,omitempty"`
 	// Add auth proxy header to requests
-	AuthProxy bool `json:"authProxy,omitempty"`
+	AuthProxy  bool     `json:"authProxy,omitempty"`
+	Rewrite    []string `json:"rewrite,omitempty"`
+	Replace    []string `json:"replace,omitempty"`
+	PathRegexp []string `json:"pathRegexp,omitempty"`
 }
 
 type ReverseProxyStatus struct {
