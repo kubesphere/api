@@ -5,6 +5,19 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
+const (
+	ServiceAccountName            = "kubesphere.io/service-account.name"
+	ServiceAccountUID             = "kubesphere.io/service-account.uid"
+	ServiceAccountToken           = "token"
+	SecretTypeServiceAccountToken = "kubesphere.io/service-account-token"
+
+	ServiceAccountGroup                     = "kubesphere:serviceaccount"
+	ServiceAccountTokenPrefix               = ServiceAccountGroup + ":"
+	ServiceAccountTokenSubFormat            = ServiceAccountTokenPrefix + "%s:%s"
+	ServiceAccountTokenExtraSecretNamespace = "secret-namespace"
+	ServiceAccountTokenExtraSecretName      = "secret-name"
+)
+
 // +kubebuilder:object:root=true
 // +kubebuilder:resource:scope="Namespaced"
 

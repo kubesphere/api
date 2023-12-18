@@ -35,6 +35,9 @@ const (
 	ClusterVisibilityLabel  = "cluster.kubesphere.io/visibility"
 	ClusterVisibilityPublic = "public"
 	Finalizer               = "finalizer.cluster.kubesphere.io"
+
+	AnnotationClusterName     = "cluster.kubesphere.io/name"
+	AnnotationHostClusterName = "cluster.kubesphere.io/host-cluster"
 )
 
 type ClusterSpec struct {
