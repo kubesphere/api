@@ -42,11 +42,8 @@ type Directives struct {
 	HeaderUp []string `json:"headerUp,omitempty"`
 	// Sets, adds (with the + prefix), deletes (with the - prefix), or performs a replacement (by using two arguments, a search and replacement) in a response header coming downstream from the backend.
 	HeaderDown []string `json:"headerDown,omitempty"`
-	// Change Host header for name-based virtual hosted sites.
-	ChangeOrigin bool `json:"changeOrigin,omitempty"`
-	// InterceptRedirects determines whether the proxy should sniff backend responses for redirects, only allows redirects to the same host.
-	// Deprecated, https://github.com/kubernetes/kubernetes/pull/106830
-	InterceptRedirects bool `json:"interceptRedirects,omitempty"`
+	// Reject to forward redirect response
+	RejectForwardingRedirects bool `json:"rejectForwardingRedirects,omitempty"`
 	//  WrapTransport indicates whether the provided Transport should be wrapped with default proxy transport behavior (URL rewriting, X-Forwarded-* header setting)
 	WrapTransport bool `json:"wrapTransport,omitempty"`
 	// Add auth proxy header to requests
