@@ -77,6 +77,10 @@ type ExtensionVersionSpec struct {
 	// ChartDataRef refers to a configMap which contains raw chart data.
 	ChartDataRef *ConfigMapKeyRef `json:"chartDataRef,omitempty"`
 	ChartURL     string           `json:"chartURL,omitempty"`
+	// Namespace represents the namespace in which the extension is installed.
+	// If empty, it will be installed in the namespace named extension-{name}.
+	// +optional
+	Namespace string `json:"namespace,omitempty"`
 	// +kubebuilder:default:=HostOnly
 	// +kubebuilder:validation:Enum=HostOnly;Multicluster
 	InstallationMode InstallationMode `json:"installationMode,omitempty"`
