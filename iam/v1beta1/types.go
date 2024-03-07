@@ -50,6 +50,7 @@ type AggregationRoleTemplates struct {
 // +kubebuilder:object:root=true
 
 // SubjectAccessReview checks whether a user or group can perform an action.
+// NOTE: This type does not require crd, so we omit the metav1.ObjectMeta
 type SubjectAccessReview struct {
 	metav1.TypeMeta `json:",inline"`
 
@@ -59,6 +60,15 @@ type SubjectAccessReview struct {
 	// Status is filled in by the server and indicates whether the request is allowed or not
 	// +optional
 	Status SubjectAccessReviewStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
+}
+
+// +kubebuilder:object:root=true
+
+// SubjectAccessReviewList contains a list of SubjectAccessReview
+type SubjectAccessReviewList struct {
+	metav1.TypeMeta `json:",inline"`
+	metav1.ListMeta `json:"metadata,omitempty"`
+	Items           []SubjectAccessReview `json:"items"`
 }
 
 // SubjectAccessReviewSpec is a description of the access request.  Exactly one of ResourceAuthorizationAttributes

@@ -71,7 +71,7 @@ const (
 	NamespaceAdmin                        = "admin"
 	ClusterAdmin                          = "cluster-admin"
 	PreRegistrationUser                   = "system:pre-registration"
-	PreRegistrationUserGroup              = "pre-registration"
+	OTPAuthRequiredUser                   = "system:otp-auth-required"
 	ResourcePluralGroup                   = "groups"
 	GroupReferenceLabel                   = "iam.kubesphere.io/group-ref"
 	GroupParent                           = "iam.kubesphere.io/group-parent"
