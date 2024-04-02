@@ -27,24 +27,20 @@ const (
 	WorkspaceLabel            = "kubesphere.io/workspace"
 )
 
-// EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
-// NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
-
-// WorkspaceSpec defines the desired state of Workspace
 type WorkspaceSpec struct {
-	Manager string `json:"manager,omitempty"`
+	Manager          string `json:"manager,omitempty"`
+	NetworkIsolation *bool  `json:"networkIsolation,omitempty"`
 }
 
-// WorkspaceStatus defines the observed state of Workspace
 type WorkspaceStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 }
 
 // +kubebuilder:object:root=true
+// +kubebuilder:deprecatedversion
 // +kubebuilder:resource:categories="tenant",scope="Cluster"
 
-// Workspace is the Schema for the workspaces API
 type Workspace struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
@@ -54,13 +50,8 @@ type Workspace struct {
 
 // +kubebuilder:object:root=true
 
-// WorkspaceList contains a list of Workspace
 type WorkspaceList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
 	Items           []Workspace `json:"items"`
-}
-
-func init() {
-	SchemeBuilder.Register(&Workspace{}, &WorkspaceList{})
 }

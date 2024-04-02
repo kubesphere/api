@@ -38,7 +38,12 @@ const (
 
 	AnnotationClusterName     = "cluster.kubesphere.io/name"
 	AnnotationHostClusterName = "cluster.kubesphere.io/host-cluster"
+
+	ClusterRoleHost   ClusterRole = "host"
+	ClusterRoleMember ClusterRole = "member"
 )
+
+type ClusterRole string
 
 type ClusterSpec struct {
 	// Join cluster as a kubefed cluster
@@ -54,6 +59,9 @@ type ClusterSpec struct {
 
 	// Connection holds info to connect to the member cluster
 	Connection Connection `json:"connection,omitempty"`
+
+	// Config represents the custom helm chart values used when installing the cluster
+	Config []byte `json:"config,omitempty"`
 
 	// ExternalKubeAPIEnabled export kube-apiserver to public use a lb type service if connection type is proxy
 	ExternalKubeAPIEnabled bool `json:"externalKubeAPIEnabled,omitempty"`
@@ -124,6 +132,8 @@ const (
 
 	// ClusterReady indicates the Cluster is all available for requests
 	ClusterReady ClusterConditionType = "Ready"
+
+	ClusterSchedulable ClusterConditionType = "Schedulable"
 
 	// ClusterOpenPitrixRuntimeReady indicates the Openpitrix runtime is created
 	ClusterOpenPitrixRuntimeReady ClusterConditionType = "OpenPitrixRuntimeReady"

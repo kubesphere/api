@@ -17,13 +17,14 @@ limitations under the License.
 package v1alpha1
 
 const (
-	StateEnabled         = "Enabled"
-	StateDisabled        = "Disabled"
+	StateUnknown         = ""
 	StateInstalling      = "Installing"
 	StateInstallFailed   = "InstallFailed"
 	StateUpgrading       = "Upgrading"
 	StateUpgradeFailed   = "UpgradeFailed"
 	StateInstalled       = "Installed"
+	StateDeployed        = StateInstalled
+	StateUpgraded        = "Upgraded"
 	StateUninstalling    = "Uninstalling"
 	StateUninstalled     = "Uninstalled"
 	StateUninstallFailed = "UninstallFailed"
@@ -45,11 +46,9 @@ const (
 	InstallationModeAnnotation     = "kubesphere.io/installation-mode"
 	ExternalDependenciesAnnotation = "kubesphere.io/external-dependencies"
 
-	ExtensionReferenceLabel   = "kubesphere.io/extension-ref"
-	RepositoryReferenceLabel  = "kubesphere.io/repository-ref"
-	InstallPlanReferenceLabel = "kubesphere.io/installplan-ref"
-	CategoryLabel             = "kubesphere.io/category"
+	ExtensionReferenceLabel  = "kubesphere.io/extension-ref"
+	RepositoryReferenceLabel = "kubesphere.io/repository-ref"
+	CategoryLabel            = "kubesphere.io/category"
 
-	ForceDeleteAnnotation           = "kubesphere.io/force-delete"
-	InstallPlanConfigHashAnnotation = "kubesphere.io/config-hash"
+	ForceDeleteAnnotation = "kubesphere.io/force-delete"
 )

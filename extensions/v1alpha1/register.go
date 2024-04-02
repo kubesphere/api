@@ -50,5 +50,7 @@ func init() {
 		&JSBundleList{},
 		&ReverseProxy{},
 		&ReverseProxyList{},
+		&ExtensionEntry{},
+		&ExtensionEntryList{},
 	)
 }

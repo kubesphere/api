@@ -20,6 +20,8 @@ const (
 	RepoIDLabelKey              = "application.kubesphere.io/repo-name"
 	ReqUserAnnotationKey        = "application.kubesphere.io/req-user"
 	AppIDLabelKey               = "application.kubesphere.io/app-id"
+	AppOriginalNameLabelKey     = "application.kubesphere.io/app-originalName"
+	AppVersionIDLabelKey        = "application.kubesphere.io/appversion-id"
 	AppTypeLabelKey             = "application.kubesphere.io/app-type"
 	AppStoreLabelKey            = "application.kubesphere.io/app-store"
 	AppCategoryNameKey          = "application.kubesphere.io/app-category-name"
@@ -30,9 +32,12 @@ const (
 	StatusActive                = "active"
 	StatusSuccessful            = "successful"
 	StatusCreating              = "creating"
+	StatusSyncing               = "syncing"
 	StatusDeleting              = "deleting"
 	StatusUpgrading             = "upgrading"
+	StatusClusterDeleted        = "clusterDeleted"
 	StatusFailed                = "failed"
+	StatusDeployFailed          = "deployFailed"
 	StatusCreated               = "created"
 	StatusUpgraded              = "upgraded"
 	StatusNosync                = "nosync"
@@ -40,7 +45,11 @@ const (
 	AppTypeYaml                 = "yaml"
 	AppTypeEdge                 = "edge"
 	BinaryKey                   = "BinaryKey"
+	UploadRepoKey               = "upload"
 	MaxNumOfVersions            = 10
+	MaxImageWidth               = 128
+	ApplicationNamespace        = "extension-openpitrix"
+	StoreCleanFinalizer         = "storeCleanFinalizer.application.kubesphere.io"
 	SystemWorkspace             = "system-workspace"
 	// App review status: draft, submitted, passed, rejected, suspended, active
 	ReviewStatusDraft     = "draft"
