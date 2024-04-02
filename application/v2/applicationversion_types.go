@@ -31,6 +31,7 @@ type ApplicationVersionSpec struct {
 	Digest      string       `json:"digest,omitempty"`
 	AppType     string       `json:"appType,omitempty"`
 	Maintainer  []Maintainer `json:"maintainer,omitempty"`
+	PullUrl     string       `json:"pullUrl,omitempty"`
 }
 
 // ApplicationVersionStatus defines the observed state of ApplicationVersion
@@ -44,6 +45,10 @@ type ApplicationVersionStatus struct {
 // +kubebuilder:object:root=true
 // +kubebuilder:resource:scope=Cluster,shortName=appver
 // +kubebuilder:subresource:status
+// +kubebuilder:printcolumn:name="repo",type="string",JSONPath=".metadata.labels.application\\.kubesphere\\.io/repo-name"
+// +kubebuilder:printcolumn:name="workspace",type="string",JSONPath=".metadata.labels.kubesphere\\.io/workspace"
+// +kubebuilder:printcolumn:name="app",type="string",JSONPath=".metadata.labels.application\\.kubesphere\\.io/app-id"
+// +kubebuilder:printcolumn:name="appType",type="string",JSONPath=".spec.appType"
 // +kubebuilder:printcolumn:name="State",type="string",JSONPath=".status.state"
 // +kubebuilder:printcolumn:name="Age",type="date",JSONPath=".metadata.creationTimestamp"
 

@@ -21,6 +21,8 @@ import (
 )
 
 const (
+	ResourceKindInstallPlan = "InstallPlan"
+
 	Automatic UpgradeStrategy = "Automatic"
 	Manual    UpgradeStrategy = "Manual"
 )
@@ -44,9 +46,10 @@ type InstallPlanState struct {
 
 type InstallationStatus struct {
 	State           string             `json:"state,omitempty"`
+	ConfigHash      string             `json:"configHash,omitempty"`
+	TargetNamespace string             `json:"targetNamespace,omitempty"`
 	ReleaseName     string             `json:"releaseName,omitempty"`
 	Version         string             `json:"version,omitempty"`
-	TargetNamespace string             `json:"targetNamespace,omitempty"`
 	JobName         string             `json:"jobName,omitempty"`
 	Conditions      []metav1.Condition `json:"conditions,omitempty"`
 	StateHistory    []InstallPlanState `json:"stateHistory,omitempty"`
@@ -70,6 +73,7 @@ type InstallPlanSpec struct {
 
 type InstallPlanStatus struct {
 	InstallationStatus `json:",inline"`
+	Enabled            bool `json:"enabled,omitempty"`
 	// ClusterSchedulingStatuses describes the subchart installation status of the extension
 	ClusterSchedulingStatuses map[string]InstallationStatus `json:"clusterSchedulingStatuses,omitempty"`
 }

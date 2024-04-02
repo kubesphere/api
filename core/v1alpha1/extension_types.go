@@ -72,6 +72,7 @@ type ExtensionVersionSpec struct {
 	// eg: >= 1.2.0, see https://github.com/Masterminds/semver for more info.
 	KSVersion   string   `json:"ksVersion,omitempty"`
 	Home        string   `json:"home,omitempty"`
+	Docs        string   `json:"docs,omitempty"`
 	Digest      string   `json:"digest,omitempty"`
 	Screenshots []string `json:"screenshots,omitempty"`
 	// ChartDataRef refers to a configMap which contains raw chart data.
@@ -91,7 +92,7 @@ type ExtensionVersionSpec struct {
 type ExternalDependency struct {
 	// Name of the external dependency
 	Name string `json:"name"`
-	// Type of dependency, default to extension
+	// Type of dependency, defaults to extension
 	// +optional
 	Type string `json:"type,omitempty"`
 	// SemVer
@@ -137,7 +138,9 @@ type ExtensionVersionInfo struct {
 
 type ExtensionStatus struct {
 	State                 string                 `json:"state,omitempty"`
+	Enabled               bool                   `json:"enabled,omitempty"`
 	PlannedInstallVersion string                 `json:"plannedInstallVersion,omitempty"`
+	InstalledVersion      string                 `json:"installedVersion,omitempty"`
 	RecommendedVersion    string                 `json:"recommendedVersion,omitempty"`
 	Versions              []ExtensionVersionInfo `json:"versions,omitempty"`
 	Conditions            []metav1.Condition     `json:"conditions,omitempty"`

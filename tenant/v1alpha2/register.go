@@ -14,39 +14,28 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// Package v1alpha2 contains API Schema definitions for the tenant v1alpha2 API group
 // +kubebuilder:object:generate=true
 // +groupName=tenant.kubesphere.io
+
 package v1alpha2
 
 import (
-	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"
+	"sigs.k8s.io/controller-runtime/pkg/scheme"
 )
 
 var (
-	// SchemeGroupVersion is group version used to register these objects
 	SchemeGroupVersion = schema.GroupVersion{Group: "tenant.kubesphere.io", Version: "v1alpha2"}
 
-	// SchemeBuilder is used to add go types to the GroupVersionKind scheme
-	SchemeBuilder = runtime.NewSchemeBuilder(addKnownTypes)
+	SchemeBuilder = &scheme.Builder{GroupVersion: SchemeGroupVersion}
 
-	// AddToScheme is required by pkg/client/...
 	AddToScheme = SchemeBuilder.AddToScheme
 )
 
-// Resource takes an unqualified resource and returns a Group qualified GroupResource
 func Resource(resource string) schema.GroupResource {
 	return SchemeGroupVersion.WithResource(resource).GroupResource()
 }
 
-func addKnownTypes(scheme *runtime.Scheme) error {
-	scheme.AddKnownTypes(SchemeGroupVersion,
-		&WorkspaceTemplate{},
-		&WorkspaceTemplateList{},
-	)
-	// Add the watch version that applies
-	metav1.AddToGroupVersion(scheme, SchemeGroupVersion)
-	return nil
+func init() {
+	SchemeBuilder.Register(&WorkspaceTemplate{}, &WorkspaceTemplateList{})
 }

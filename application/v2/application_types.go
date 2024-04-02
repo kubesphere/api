@@ -24,9 +24,21 @@ import (
 
 // ApplicationSpec defines the desired state of Application
 type ApplicationSpec struct {
-	AppHome string `json:"appHome,omitempty"`
-	AppType string `json:"appType,omitempty"`
-	Icon    string `json:"icon,omitempty"`
+	AppHome     string                 `json:"appHome,omitempty"`
+	AppType     string                 `json:"appType,omitempty"`
+	Icon        string                 `json:"icon,omitempty"`
+	Abstraction string                 `json:"abstraction,omitempty"`
+	Attachments []string               `json:"attachments,omitempty"`
+	Resources   []GroupVersionResource `json:"resources,omitempty"`
+}
+
+type GroupVersionResource struct {
+	Group      string `json:"Group,omitempty"`
+	Version    string `json:"Version,omitempty"`
+	Resource   string `json:"Resource,omitempty"`
+	Name       string `json:"Name,omitempty"`
+	Desc       string `json:"Desc,omitempty"`
+	ParentNode string `json:"ParentNode,omitempty"`
 }
 
 // ApplicationStatus defines the observed state of Application
@@ -39,7 +51,9 @@ type ApplicationStatus struct {
 // +kubebuilder:object:root=true
 // +kubebuilder:resource:scope=Cluster,shortName=app
 // +kubebuilder:subresource:status
+// +kubebuilder:printcolumn:name="repo",type="string",JSONPath=".metadata.labels.application\\.kubesphere\\.io/repo-name"
 // +kubebuilder:printcolumn:name="workspace",type="string",JSONPath=".metadata.labels.kubesphere\\.io/workspace"
+// +kubebuilder:printcolumn:name="appType",type="string",JSONPath=".spec.appType"
 // +kubebuilder:printcolumn:name="State",type="string",JSONPath=".status.state"
 // +kubebuilder:printcolumn:name="Age",type="date",JSONPath=".metadata.creationTimestamp"
 

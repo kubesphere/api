@@ -39,20 +39,16 @@ type RepoCredential struct {
 
 // RepoSpec defines the desired state of Repo
 type RepoSpec struct {
-	//  repo url
-	Url string `json:"url"`
-	//  repo credential
-	Credential RepoCredential `json:"credential,omitempty"`
-	// chart repo description from frontend
-	Description string `json:"description,omitempty"`
-	// sync period in seconds, no sync when SyncPeriod=0, the minimum SyncPeriod is 180s
-	SyncPeriod int `json:"syncPeriod,omitempty"`
+	Url         string         `json:"url"`
+	Credential  RepoCredential `json:"credential,omitempty"`
+	Description string         `json:"description,omitempty"`
+	SyncPeriod  int            `json:"syncPeriod,omitempty"`
 }
 
 // RepoStatus defines the observed state of Repo
 type RepoStatus struct {
-	LastUpdateTime *metav1.Time `json:"lastUpdateTime,omitempty"`
-	State          string       `json:"state,omitempty"`
+	LastUpdateTime metav1.Time `json:"lastUpdateTime,omitempty"`
+	State          string      `json:"state,omitempty"`
 }
 
 // +kubebuilder:object:root=true

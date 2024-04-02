@@ -36,21 +36,22 @@ type ApplicationReleaseSpec struct {
 
 // ApplicationReleaseStatus defines the observed state of ApplicationRelease
 type ApplicationReleaseStatus struct {
-	State   string `json:"state"`
-	Message string `json:"message,omitempty"`
-	// This is used to compare whether the spec has been modified to determine if an upgrade is needed.
+	State             string            `json:"state"`
+	Message           string            `json:"message,omitempty"`
 	SpecHash          string            `json:"specHash,omitempty"`
-	JobName           string            `json:"jobName,omitempty"`
+	InstallJobName    string            `json:"installJobName,omitempty"`
+	UninstallJobName  string            `json:"uninstallJobName,omitempty"`
 	LastUpdate        metav1.Time       `json:"lastUpdate,omitempty"`
-	LastDeployed      *metav1.Time      `json:"lastDeployed,omitempty"`
 	RealTimeResources []json.RawMessage `json:"realTimeResources,omitempty"`
 }
 
 // +kubebuilder:object:root=true
 // +kubebuilder:resource:scope=Cluster,shortName=apprls
 // +kubebuilder:subresource:status
-// +kubebuilder:printcolumn:name="App Name",type=string,JSONPath=".spec.AppID"
-// +kubebuilder:printcolumn:name="Workspace",type="string",JSONPath=".metadata.labels.kubesphere\\.io/workspace"
+// +kubebuilder:printcolumn:name="workspace",type="string",JSONPath=".metadata.labels.kubesphere\\.io/workspace"
+// +kubebuilder:printcolumn:name="app",type="string",JSONPath=".metadata.labels.application\\.kubesphere\\.io/app-id"
+// +kubebuilder:printcolumn:name="appversion",type="string",JSONPath=".metadata.labels.application\\.kubesphere\\.io/appversion-id"
+// +kubebuilder:printcolumn:name="appType",type="string",JSONPath=".spec.appType"
 // +kubebuilder:printcolumn:name="Cluster",type="string",JSONPath=".metadata.labels.kubesphere\\.io/cluster"
 // +kubebuilder:printcolumn:name="Namespace",type="string",JSONPath=".metadata.labels.kubesphere\\.io/namespace"
 // +kubebuilder:printcolumn:name="State",type="string",JSONPath=".status.state"
