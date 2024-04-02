@@ -58,16 +58,3 @@ require (
 	sigs.k8s.io/structured-merge-diff/v4 v4.4.1 // indirect
 	sigs.k8s.io/yaml v1.4.0 // indirect
 )
-
-replace (
-	go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc => go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.48.0
-	go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc => go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc v1.23.0
-	golang.org/x/crypto => golang.org/x/crypto v0.5.0
-	golang.org/x/net => golang.org/x/net v0.17.0
-	golang.org/x/oauth2 => golang.org/x/oauth2 v0.4.0
-	golang.org/x/sync => golang.org/x/sync v0.1.0
-	golang.org/x/sys => golang.org/x/sys v0.5.0
-	golang.org/x/text => golang.org/x/text v0.7.0
-	golang.org/x/tools => golang.org/x/tools v0.6.0
-	kubesphere.io/api => ../api
-)
