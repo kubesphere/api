@@ -68,5 +68,4 @@ replace (
 	golang.org/x/sys => golang.org/x/sys v0.5.0
 	golang.org/x/text => golang.org/x/text v0.7.0
 	golang.org/x/tools => golang.org/x/tools v0.6.0
-	kubesphere.io/api => ../api
 )
